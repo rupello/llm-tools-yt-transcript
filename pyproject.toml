@@ -1,6 +1,6 @@
 [project]
 name = "llm-tools-yt-transcript"
-version = "0.1"
+version = "0.2"
 description = "Make YouTube transcripts available to llm"
 readme = "README.md"
 authors = [{name = "Rupert Lloyd"}]
