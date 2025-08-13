@@ -1,7 +1,7 @@
 import llm
 import json
 import pytest
-from llm_tools_yt_transcript import yt_transcript
+from llm_tools_yt_transcript.youtube import yt_transcript
 
 
 @pytest.mark.skip("requires internet access")

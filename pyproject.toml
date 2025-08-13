@@ -6,9 +6,11 @@ readme = "README.md"
 authors = [{name = "Rupert Lloyd"}]
 license = "Apache-2.0"
 classifiers = []
-requires-python = ">=3.9"
+requires-python = ">=3.12"
 dependencies = [
+    "httpx>=0.28.1",
     "llm>=0.26",
+    "mcp[cli]>=1.12.4",
     "requests>=2.32.4",
     "youtube-transcript-api>=1.1.1",
 ]
@@ -16,6 +18,9 @@ dependencies = [
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [project.urls]
 Homepage = "https://github.com/rupello/llm-tools-yt-transcript"
@@ -28,3 +33,26 @@ llm_tools_yt_transcript = "llm_tools_yt_transcript"
 
 [project.optional-dependencies]
 test = ["pytest", "llm-echo>=0.3a1"]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = [
+    "-ra",
+    "--strict-markers",
+    "--strict-config",
+    "--tb=short",
+    "-v",
+]
+pythonpath = [
+    "src",  # Add project root to Python path
+]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+]
+testpaths = [
+    "tests",
+]
+
+[project.scripts]
+yt-transcript-mcp-server = "llm_tools_yt_transcript:mcp_main"

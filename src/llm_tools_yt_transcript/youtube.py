@@ -1,24 +1,22 @@
+from typing import Dict
 import re
 import requests
-
-import llm
 from youtube_transcript_api import YouTubeTranscriptApi
-
 
 def extract_video_id(url_or_id):
     if len(url_or_id) == 11 and not '/' in url_or_id:
         return url_or_id
-    
+
     patterns = [
         r'(?:youtube\.com/watch\?v=|youtu\.be/|youtube\.com/embed/)([a-zA-Z0-9_-]{11})',
         r'youtube\.com/watch\?.*v=([a-zA-Z0-9_-]{11})'
     ]
-    
+
     for pattern in patterns:
         match = re.search(pattern, url_or_id)
         if match:
             return match.group(1)
-    
+
     raise ValueError(f"Could not extract video ID from: {url_or_id}")
 
 
@@ -42,7 +40,7 @@ def get_video_metadata(video_id):
         raise Exception(f"Failed to fetch metadata for video {video_id}: {e}")
 
 
-def yt_transcript(input: str) -> str:
+def yt_transcript(input: str) -> Dict:
     """
     input: a youtube video id or url
     Returns: a stringified json object with metadata and transcript of a youtube video
@@ -54,7 +52,3 @@ def yt_transcript(input: str) -> str:
 
     return metadata
 
-
-@llm.hookimpl
-def register_tools(register):
-    register(yt_transcript)
