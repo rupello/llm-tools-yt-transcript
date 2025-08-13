@@ -4,7 +4,7 @@ import pytest
 from llm_tools_yt_transcript.youtube import yt_transcript
 
 
-# @pytest.mark.skip("requires internet access")
+@pytest.mark.skip("requires internet access")
 def test_tool():
     model = llm.get_model("echo")
     chain_response = model.chain(
