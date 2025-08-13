@@ -54,3 +54,5 @@ testpaths = [
     "tests",
 ]
 
+[project.scripts]
+yt-transcript-mcp-server = "llm_tools_yt_transcript:mcp_main"

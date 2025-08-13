@@ -64,3 +64,9 @@ To run the tests:
 ```bash
 python -m pytest
 ```
+
+## MCP Server
+To run as an MCP server, eg
+```shell
+yt-transcript-mcp-server --transport="stdio"
+```
