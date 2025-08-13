@@ -38,7 +38,7 @@ With the [LLM Python API](https://llm.datasette.io/en/stable/python-api.html):
 
 ```python
 import llm
-from llm_tools_yt_transcript import yt_transcript
+from src.llm_tools_yt_transcript.llm_tools_register import yt_transcript
 
 model = llm.get_model("gpt-4.1-mini")
 
